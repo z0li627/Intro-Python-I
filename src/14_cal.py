@@ -31,15 +31,32 @@ import sys
 import calendar
 from datetime import datetime
 
+for x in sys.argv:
+     print("Argument: ", x)
+
 def usage():
-    print("Usage: 14_cal.py [month] [year]"
+  print("Usage: 14.cal_py [month] [year]")
 
-def cal_request():
-    month = datetime.now().month
-    year = datetime.now().year
-    c = calendar.TextCalendar(calendar.MONDAY)
-    str = c.formatmonth(year, month, 0, 0)
-    print(str)
+def today_request(month1 = datetime.now().month, year1 = datetime.now().year):
+  c = calendar.TextCalendar(calendar.MONDAY)
+  str1 = c.formatmonth(year1, month1, 0, 0)
+  print(str1)
 
-cal_request()
+def given_date(month2 = int(sys.argv[1]), year2 = int(sys.argv[2])):
+  c = calendar.TextCalendar(calendar.MONDAY)
+  str2 = c.formatmonth(year2, month2, 0, 0)
+  print(str2)
+
+given_args = len(sys.argv)
+print(given_args)
+
+if given_args == 1:
+  today_request()
+elif given_args == 2:
+  usage()
+elif given_args == 3:
+  given_date()
+else:
+  usage()
+
 
